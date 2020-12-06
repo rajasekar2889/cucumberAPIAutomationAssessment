@@ -45,7 +45,8 @@ public class GetExchangeRatesForLatestDateSteps {
         get(apiForLatestExchangeRate).then()
                 .contentType("application/json")
                 .body("base",equalTo("EUR"))
-                .body("date",equalTo(utils.getCurrentDate()));
+                .body("date",equalTo(utils.getCurrentDate()))
+                .body("rates",notNullValue());
     }
 
     //Test exchange rate api service for current date with incorrect url

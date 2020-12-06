@@ -44,7 +44,8 @@ public class GetExchangeRatesForHistoricalDateSteps {
         get(apiForHistoricalExchangeRate).then()
                 .contentType("application/json")
                 .body("base",equalTo("EUR"))
-                .body("date",equalTo(utils.getOldDate()));
+                .body("date",equalTo(utils.getOldDate()))
+                .body("rates",notNullValue());
     }
 
 
@@ -63,7 +64,11 @@ public class GetExchangeRatesForHistoricalDateSteps {
     }
     @Then("^Assert the date is equal to current date in response$")
     public void assert_the_date_is_equal_to_current_date_in_response() {
-        get(apiForFutureExchangeRate).then().body("date",equalTo(utils.getCurrentDate()));
+        get(apiForFutureExchangeRate).then()
+                .contentType("application/json")
+                .body("base",equalTo("EUR"))
+                .body("date",equalTo(utils.getCurrentDate()))
+                .body("rates",notNullValue());
     }
 
 
