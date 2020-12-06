@@ -18,6 +18,7 @@ public class GetExchangeRatesForHistoricalDateSteps {
     private Response response;
     private final Utils utils;
 
+    //Getting utils with common methods using Cucumber's dependency injection
     public GetExchangeRatesForHistoricalDateSteps(Utils utils){
 
         this.utils = utils;
@@ -35,7 +36,6 @@ public class GetExchangeRatesForHistoricalDateSteps {
     }
     @Then("^Assert the status code for old date is 200$")
     public void assert_the_status_code_for_old_date_is_200() {
-        response.getStatusCode();
         Assert.assertEquals(response.getStatusCode(),200);
     }
 
@@ -46,6 +46,9 @@ public class GetExchangeRatesForHistoricalDateSteps {
                 .body("base",equalTo("EUR"))
                 .body("date",equalTo(utils.getOldDate()))
                 .body("rates",notNullValue());
+        for(int i=0;i<utils.getCurrencyList().length;i++){
+            get(apiForHistoricalExchangeRate).then().body("rates",hasKey(utils.getCurrencyList()[i]));
+        }
     }
 
 
@@ -69,6 +72,9 @@ public class GetExchangeRatesForHistoricalDateSteps {
                 .body("base",equalTo("EUR"))
                 .body("date",equalTo(utils.getCurrentDate()))
                 .body("rates",notNullValue());
+        for(int i=0;i<utils.getCurrencyList().length;i++){
+            get(apiForFutureExchangeRate).then().body("rates",hasKey(utils.getCurrencyList()[i]));
+        }
     }
 
 

@@ -17,6 +17,7 @@ public class GetExchangeRatesForLatestDateSteps {
     private Response response;
     private final Utils utils;
 
+    //Getting utils with common methods using Cucumber's dependency injection
     public GetExchangeRatesForLatestDateSteps(Utils utils){
 
         this.utils = utils;
@@ -47,6 +48,9 @@ public class GetExchangeRatesForLatestDateSteps {
                 .body("base",equalTo("EUR"))
                 .body("date",equalTo(utils.getCurrentDate()))
                 .body("rates",notNullValue());
+        for(int i=0;i<utils.getCurrencyList().length;i++){
+            get(apiForLatestExchangeRate).then().body("rates",hasKey(utils.getCurrencyList()[i]));
+        }
     }
 
     //Test exchange rate api service for current date with incorrect url
