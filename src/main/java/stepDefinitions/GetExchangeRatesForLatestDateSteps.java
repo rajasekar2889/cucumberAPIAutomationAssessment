@@ -36,13 +36,16 @@ public class GetExchangeRatesForLatestDateSteps {
 
     @Then("^Assert the status code for current date is 200$")
     public void assert_the_status_code_for_current_date_is_200() {
+
         Assert.assertEquals(response.getStatusCode(), 200);
     }
 
     @Then("^Assert the response for the current date$")
     public void assert_the_response_for_the_current_date() {
-        get(apiForLatestExchangeRate).then().body("base",equalTo("EUR"));
-        get(apiForLatestExchangeRate).then().body("date",equalTo(utils.getCurrentDate()));
+        get(apiForLatestExchangeRate).then()
+                .contentType("application/json")
+                .body("base",equalTo("EUR"))
+                .body("date",equalTo(utils.getCurrentDate()));
     }
 
     //Test exchange rate api service for current date with incorrect url

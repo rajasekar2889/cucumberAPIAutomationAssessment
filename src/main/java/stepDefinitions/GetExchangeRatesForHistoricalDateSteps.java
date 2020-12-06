@@ -41,8 +41,10 @@ public class GetExchangeRatesForHistoricalDateSteps {
 
     @Then("^Assert the response for old date$")
     public void assert_the_response_for_old_date() {
-        get(apiForHistoricalExchangeRate).then().body("base",equalTo("EUR"));
-        get(apiForHistoricalExchangeRate).then().body("date",equalTo(utils.getOldDate()));
+        get(apiForHistoricalExchangeRate).then()
+                .contentType("application/json")
+                .body("base",equalTo("EUR"))
+                .body("date",equalTo(utils.getOldDate()));
     }
 
 
@@ -57,7 +59,6 @@ public class GetExchangeRatesForHistoricalDateSteps {
     }
     @Then("^Assert the status code for future date is 200$")
     public void assert_the_status_code_for_future_date_is_200() {
-        response.getStatusCode();
         Assert.assertEquals(response.getStatusCode(),200);
     }
     @Then("^Assert the date is equal to current date in response$")
