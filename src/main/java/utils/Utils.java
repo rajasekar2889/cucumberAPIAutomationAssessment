@@ -1,5 +1,13 @@
 package utils;
 
+import io.restassured.path.json.JsonPath;
+import org.apache.commons.io.IOUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 
 public class Utils {
@@ -27,6 +35,20 @@ public class Utils {
     public String baseUri(){
 
         return "https://api.ratesapi.io/api/";
+    }
+
+    public static JsonPath rawToJson(String response){
+        JsonPath jp = new JsonPath(response);
+        return jp;
+    }
+
+    public static String jsonToString(String path) throws IOException {
+
+//        FileInputStream fis = new FileInputStream(path);
+//        String payLoad = IOUtils.toString(fis,"UTF-8");
+//        return payLoad;
+       return new String(Files.readAllBytes(Paths.get(path)));
+
     }
 
 

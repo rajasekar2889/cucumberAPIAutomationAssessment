@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "https://rahulshettyacademy.com/maps/api/place/get/json.schema.json",
+  "type": "object",
+  "properties": {
+    "location": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "string"
+        }
+
+      }
+
+    },
+    "accuracy": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone_number": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+package Test;
+
+import data.input;
+import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.json.simple.JSONObject;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+import utils.Utils;
+
+
+import static io.restassured.RestAssured.get;
+
+public class ComplexJson {
+    String placeId;
+    String baseURI ="https://rahulshettyacademy.com";
+
+   JsonPath js = Utils.rawToJson(input.CoursePrice());
+
+   @Test
+    public void complexResponse(){
+       SoftAssert sa = new SoftAssert();
+       int numberOfCourses = js.getInt("courses.size()");
+       sa.assertEquals(numberOfCourses,4);
+       sa.assertEquals(js.getInt("dashboard.purchaseAmount"),1162);
+       int total = js.getInt("dashboard.purchaseAmount");
+       System.out.println(js.getString("courses[0].title"));
+       int priceOfEachBook =0;
+       int finalAmount=0;
+       int RPACopies =0;
+       for(int i=0;i<numberOfCourses;i++){
+           int copies = js.getInt("courses["+i+"].copies");
+           int price = js.getInt("courses["+i+"].price");
+           if(js.getString("courses["+i+"].title").equals("RPA")){
+               RPACopies = copies;
+           }
+
+           priceOfEachBook= copies * price;
+           finalAmount= finalAmount+priceOfEachBook;
+
+
+       }
+       System.out.println("total:"+ total);
+       System.out.println("finalAmount:"+ finalAmount);
+       System.out.println("RPACopies:"+ RPACopies);
+       Assert.assertEquals(finalAmount,total);
+
+
+
+
+
+
+   }
+
+}
+
