@@ -28,7 +28,7 @@ public class testing{
     File schema = new File(System.getProperty("user.dir")+"/src/main/java/data/schema.json");
    // File update = new File(System.getProperty("user.dir")+"/src/main/java/data/update.json");
     String baseDir = System.getProperty("user.dir");
-    String addPlaceJson = "/src/main/java/data/addPlace.json";
+    String addPlaceJson = System.getProperty("user.dir")+"/src/main/java/data/addPlace.json";
 
 
 
