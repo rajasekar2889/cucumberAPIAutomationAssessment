@@ -89,7 +89,7 @@ public class testing{
 
 
     }
-    @Test(dependsOnMethods = {"addPlace"})
+    @Test(priority = 1)
     public void updatePlace(){
 
         RequestSpecification request = RestAssured.given();
@@ -111,7 +111,7 @@ public class testing{
 
     }
 
-    @Test(dependsOnMethods = {"updatePlace"})
+    @Test(priority = 2)
     public void getPlace(){
         RequestSpecification request = RestAssured.given();
         request.queryParam("key","qaclick123")

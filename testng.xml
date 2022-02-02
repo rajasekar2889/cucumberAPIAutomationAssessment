@@ -8,6 +8,8 @@
                     <include name="test1"/>
                     <include name="test2"/>
                     <include name="addPlace"/>
+                    <include name="updatePlace"/>
+                    <include name="getPlace"/>
                 </methods>
             </class>
             <class name="main.java.Test.ComplexJson">
