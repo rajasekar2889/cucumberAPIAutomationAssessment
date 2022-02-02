@@ -28,7 +28,7 @@ public class testing{
     File schema = new File(System.getProperty("user.dir")+"/src/main/java/data/schema.json");
    // File update = new File(System.getProperty("user.dir")+"/src/main/java/data/update.json");
     String baseDir = System.getProperty("user.dir");
-    String addPlaceJson = "/Users/rajasekar.kulasekaran/IdeaProjects/CucumberRestAPIAutomation/src/main/java/data/addPlace.json";
+    //String addPlaceJson = "/Users/rajasekar.kulasekaran/IdeaProjects/CucumberRestAPIAutomation/src/main/java/data/addPlace.json";
 
 
 
@@ -66,8 +66,8 @@ public class testing{
         RequestSpecification request = RestAssured.given();
         request.header("Content-Type","application/json")
                 .queryParam("key","qaclick123")
-               // .body(input.AddPlace());
-                .body(Utils.jsonToString(addPlaceJson));
+                .body(input.AddPlace());
+                //.body(Utils.jsonToString(addPlaceJson));
 
         Response resp = request.filter(sf)
                 .post(baseURI+"/maps/api/place/add/json");
