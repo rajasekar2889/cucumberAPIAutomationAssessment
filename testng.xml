@@ -3,14 +3,14 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="/Users/rajasekar.kulasekaran/IdeaProjects/CucumberRestAPIAutomation">
         <classes>
-            <class name="Test.testing">
+            <class name="main.java.Test.testing">
                 <methods>
                     <include name="test1"/>
                     <include name="test2"/>
                     <include name="addPlace"/>
                 </methods>
             </class>
-            <class name="Test.ComplexJson">
+            <class name="main.java.Test.ComplexJson">
                 <methods>
                     <include name="complexResponse"/>
                 </methods>
