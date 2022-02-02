@@ -1,4 +1,4 @@
-package Test;
+package main.java.Test;
 
 public class reverse {
     public static void main (String[] args){

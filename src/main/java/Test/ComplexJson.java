@@ -1,18 +1,11 @@
-package Test;
+package main.java.Test;
 
-import data.input;
-import io.restassured.RestAssured;
+import main.java.data.input;
 import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import org.json.simple.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import utils.Utils;
-
-
-import static io.restassured.RestAssured.get;
+import main.java.utils.Utils;
 
 public class ComplexJson {
     String placeId;

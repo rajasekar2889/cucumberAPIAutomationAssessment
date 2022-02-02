@@ -1,4 +1,4 @@
-package stepDefinitions;
+package main.java.stepDefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -7,7 +7,7 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.get;
-import utils.Utils;
+import main.java.utils.Utils;
 
 
 public class GetExchangeRatesForHistoricalDateSteps {

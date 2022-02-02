@@ -1,4 +1,4 @@
-package utils;
+package main.java.utils;
 
 import io.restassured.path.json.JsonPath;
 import org.apache.commons.io.IOUtils;

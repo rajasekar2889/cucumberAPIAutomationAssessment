@@ -1,6 +1,6 @@
-package Test;
+package main.java.Test;
 
-import data.input;
+import main.java.data.input;
 import io.cucumber.messages.internal.com.google.gson.JsonObject;
 import io.restassured.RestAssured;
 import io.restassured.filter.session.SessionFilter;
@@ -11,18 +11,17 @@ import static io.restassured.RestAssured.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.*;
 
+import main.java.utils.Utils;
 import org.json.simple.JSONObject;
 
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import utils.Retry;
-import utils.Utils;
 
 import java.io.File;
 import java.io.IOException;
 
-public class testing extends Retry {
+public class testing{
     String placeId;
     String baseURI ="https://rahulshettyacademy.com";
 
@@ -90,7 +89,7 @@ public class testing extends Retry {
 
 
     }
-    @Test(retryAnalyzer=Retry.class,dependsOnMethods = {"addPlace"})
+    @Test(dependsOnMethods = {"addPlace"})
     public void updatePlace(){
 
         RequestSpecification request = RestAssured.given();
@@ -101,7 +100,7 @@ public class testing extends Retry {
         System.out.println(input.updatePlace(placeId));
         Response resp = request.put(baseURI+"/maps/api/place/update/json");
         int status = resp.getStatusCode();
-        Assert.assertEquals(status,200);
+        Assert.assertEquals(status,404);
 
         String response = resp.asString();
         JsonPath js = Utils.rawToJson(response);
@@ -112,7 +111,7 @@ public class testing extends Retry {
 
     }
 
-    @Test(dataProvider = "placeData",dependsOnMethods = {"updatePlace"})
+    @Test(dependsOnMethods = {"updatePlace"})
     public void getPlace(){
         RequestSpecification request = RestAssured.given();
         request.queryParam("key","qaclick123")
@@ -132,11 +131,11 @@ public class testing extends Retry {
 
     }
 
-    @DataProvider(name="placeData")
-    public Object[][] getData(){
-
-        return new Object[][] {{1,2},{3,4}};
-    }
+//    @DataProvider(name="placeData")
+//    public Object[][] getData(){
+//
+//        return new Object[][] {{1,2},{3,4}};
+//    }
 
 }
 
