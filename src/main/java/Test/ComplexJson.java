@@ -27,6 +27,7 @@ public class ComplexJson {
        sa.assertEquals(numberOfCourses,4);
        sa.assertEquals(js.getInt("dashboard.purchaseAmount"),1162);
        int total = js.getInt("dashboard.purchaseAmount");
+
        System.out.println(js.getString("courses[0].title"));
        int priceOfEachBook =0;
        int finalAmount=0;
